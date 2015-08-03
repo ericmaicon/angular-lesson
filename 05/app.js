@@ -1,5 +1,5 @@
 (function() {
-    var app = angular.module('store', []);
+    var app = angular.module('store', ['store-products']);
 
     app.controller('StoreController', function() {
         this.products = [
@@ -50,31 +50,5 @@
             product.reviews.push(this.review);
             this.review = {};
         }
-    });
-
-    app.directive('productTitle', function() {
-        return {
-            restrict: 'E',
-            templateUrl: 'product-title.html'
-        };
-    });
-
-    app.directive('productPanels', function() {
-        return {
-            restrict: 'E',
-            templateUrl: 'product-panels.html',
-            controller: function() {
-                this.tab = 1;
-
-                this.setTab = function(newValue){
-                    this.tab = newValue;
-                };
-
-                this.isSet = function(tabName){
-                    return this.tab === tabName;
-                };
-            },
-            controllerAs: 'panels'
-        };
     });
 })();
